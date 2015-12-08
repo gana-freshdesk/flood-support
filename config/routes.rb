@@ -2,17 +2,19 @@ ChennaiFloods::Application.routes.draw do
   #devise_for :admin_users, ActiveAdmin::Devise.config
   #ActiveAdmin.routes(self)
 
-  get "posts/index"
+  get "floodsupport/posts/index"
 
-  get "posts/show"
+  get "floodsupport/posts/show"
 
-  get "post/home"
+  get "floodsupport/post/home"
 
-  get "home/index"
+  get "floodsupport/home/index"
 
-  get "posts/refresh"
+  get "floodsupport/posts/refresh"
 
-  get "posts/location"
+  get "floodsupport/posts/location"
+
+  get "floodsupport", :to => "posts#index"
 
   resources :posts
   
@@ -69,7 +71,7 @@ ChennaiFloods::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-  root :to => 'posts#index'
+  #root :to => 'posts#index'
   #ActiveAdmin.routes(self)
 
   # See how all your routes lay out with "rake routes"

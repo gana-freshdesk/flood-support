@@ -1,7 +1,7 @@
 <% @locations.each do |location| %>
 
 <div>
-	<%= link_to posts_location_path(location), remote: true do %>
+	<%= link_to floodsupport_posts_location_path(location), remote: true do %>
 	<button class="form-control text-left"><%= location %></button>
   <% end %>
 

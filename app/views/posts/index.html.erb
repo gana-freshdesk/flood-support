@@ -12,7 +12,7 @@
       </div>
       <div class="col-md-12">
         
-        <%= form_for @posts, :url => posts_refresh_path, :method => :get, remote: true do |f| %>
+        <%= form_for @posts, :url => floodsupport_posts_refresh_path, :method => :get, remote: true do |f| %>
 
         <%= f.select(:materials, options_for_select(@materials), {}, {multiple: false, class: 'form-control', :prompt => 'All'}) %>
         <%= f.submit 'GO', :class => 'btn btn-default btn-success' %>
