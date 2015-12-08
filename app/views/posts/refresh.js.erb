@@ -1,0 +1,10 @@
+$("#demand_div").html('');
+$("#supply_div").html('');
+$("#demand_div").append("<%= j (render 'needpartial') %>")
+$("#supply_div").append("<%= j (render 'supplypartial') %>")
+
+<% if @key == nil || @key == 'GO' %>
+  $("#city_div").html("<%= j (render 'citypartial') %>")
+<% end %>  
+FB.XFBML.parse(document.getElementById('demand_div'));
+twttr.widgets.load();

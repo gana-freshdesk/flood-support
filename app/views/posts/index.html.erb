@@ -1,0 +1,126 @@
+<div id="wrapper" class="">
+<div id="page-content-wrapper">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header"> <a class="navbar-brand" href="#"> Flood Support</a> </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row searchBar">
+      <div class="col-md-12">
+        <h4>Interested in finding about <small>(In last 12 hours)</small></h4>
+      </div>
+      <div class="col-md-12">
+        
+        <%= form_for @posts, :url => posts_refresh_path, :method => :get, remote: true do |f| %>
+
+        <%= f.select(:materials, options_for_select(@materials), {}, {multiple: false, class: 'form-control', :prompt => 'All'}) %>
+        <%= f.submit 'GO', :class => 'btn btn-default btn-success' %>
+        <% end %>
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col-md-2 alertAreas">
+        <div class="checkbox" id="city_div">
+          <%= render :partial => 'citypartial' %>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="panel panel-default panel-danger">
+          <div class="panel-heading">
+            <!--<button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target=".modal-aidneeded">Add</button>-->
+            <h3 class="panel-title">Aid Needed</h3>
+          </div>
+          <div class="panel-body" id="demand_div">
+            <%= render :partial => 'needpartial' %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="panel panel-default panel-success">
+          <div class="panel-heading">
+            <!--<button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target=".modal-aidsupply">Add</button>-->
+            <h3 class="panel-title">Aid Offered</h3>
+          </div>
+          <div class="panel-body" id="supply_div">
+            <%= render :partial => 'supplypartial' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade modal-aidneeded" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add Alert</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form newAlert">
+          <div class="form-group">
+            <label class="sr-only" for="exampleInputEmail3">Name</label>
+            <input type="text" class="form-control" id="" placeholder="Name & Contact Info" style="display:inline-block">
+          </div>
+          <div class="form-group">
+            <select class="form-control">
+              <option>All</option>
+              <option>Food</option>
+              <option>Blankets</option>
+              <option>Medicines</option>
+              <option>Others</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" rows="3">Details</textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-default btn-success">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade modal-aidsupply" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add Alert</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form newAlert">
+          <div class="form-group">
+            <label class="sr-only" for="exampleInputEmail3">Name</label>
+            <input type="text" class="form-control" id="" placeholder="Name & Contact Info" style="display:inline-block">
+          </div>
+          <div class="form-group">
+            <select class="form-control">
+              <option>All</option>
+              <option>Food</option>
+              <option>Blankets</option>
+              <option>Medicines</option>
+              <option>Others</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" rows="3">Details</textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-default btn-success">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#chooseItem').multiselect();
+		$('#chooseLocation').multiselect();
+    });
+</script>

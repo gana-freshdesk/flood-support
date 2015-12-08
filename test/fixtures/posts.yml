@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  location: MyText
+  materials: MyText
+  action: 1
+  url: MyText
+  feedText: MyText
+
+two:
+  location: MyText
+  materials: MyText
+  action: 1
+  url: MyText
+  feedText: MyText

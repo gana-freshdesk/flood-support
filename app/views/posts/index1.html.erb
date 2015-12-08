@@ -1,0 +1,57 @@
+<h1>Chennai Floods </h1>
+<h3> Find or Donate </h3>
+<!--<table border=1>
+	<tr>
+		<th>
+			Action
+		</th>
+		<th>
+			Location
+		</th>
+		<th>
+			Materials
+		</th>
+	</tr> -->
+
+<div>
+	<section ng-init="tab = 1">
+		<ul class = 'nav nav-pills'>
+			<li ng-class = "{active:tab == 1}"> 
+				<a href ng-click = "tab = 1" > Needed </a>
+			</li>
+			<li ng-class ="{active:tab == 2}">  
+				<a href ng-click = "tab = 2" > Availabe</a>
+			<li>
+		</ul>
+	</section>
+	</div>
+
+	
+	<div class="panel" ng-show = "tab === 2">
+	<% @supplies.each do |supply| %>
+	<blockquote class='post'>
+		<p class='post_action'> Available:  </p>
+		<p> @<%= supply.location %> </p>
+		<ul>
+		<% supply.materials.split(' ').each do |material| %>
+		<li> <%= material %> </li>
+		<% end %>
+	</ul>
+	</blockquote>
+	<% end %>
+	</div>
+<div class="panel" ng-show = "tab === 1">
+	<% @demands.each do |demand| %>
+	<blockquote class='post'>
+		<p class='post_action'> Needed:  </p>
+		<p> @<%= demand.location %> </p>
+		<ul>
+		<% demand.materials.split(' ').each do |material| %>
+		<li> <%= material %> </li>
+		<% end %>
+	</ul>
+	</blockquote>
+	<% end %>
+</div>
+
+<!--</table> -->

@@ -1,0 +1,28 @@
+<% @supply.each do |post| %>
+        <% if post.source == 0 %>
+              <div class="fb-post" 
+                data-href="<%= post.url %>"
+        data-width="500"></div>
+      </br>
+        <% elsif post.source == 2 %>
+        <%=  post.twitter_html %>
+        </br>     
+        <% else %>  
+            <ul class="media-list">
+              <li class="media">
+                <div class="media-body"> <span class="text-muted pull-right"> <small class="text-muted"><%= time_ago_in_words(post.created_at) %> ago</small> </span> 
+                  <strong><%= post.location%></strong>
+                  <p>
+                  <% materials = post.materials.split(',') %>
+                  <% materials.each do |material| %>
+                  <span class="label label-info"><%= material%></span>&nbsp;
+                  <%end%>
+                </p>
+                  <p> <%= post.feedText %> </p>
+                  <a href="<%= post.url %>" target="_blank"><%= post.url %> </a>
+                </div>
+              </li>
+            </ul>
+       <% end %>
+
+<% end %>
