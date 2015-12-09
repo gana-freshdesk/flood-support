@@ -43,7 +43,8 @@ class PostsController < ApplicationController
 	def location
 		puts "PARAMS " 
 		puts params
-		material = params[:post][:materials]
+		material = session[:material]
+		puts material
 		materials = []
 		materials <<  material
 		#materials.delete_at(0)
@@ -52,9 +53,7 @@ class PostsController < ApplicationController
 			location = 'All'
 		end
 
-		puts location
-
-    query materials, location
+        query materials, location
 	end
 
 	def refresh
@@ -67,13 +66,13 @@ class PostsController < ApplicationController
 		if location == nil || location == 'GO'
 			location = 'All'
 		end
-    query materials, location
+        session[:material] = material
+        query materials, location
 	end
 
 	def query(materials, location)
 		#material = params[:material]
 		#location = params[:location]
-		puts materials
 		material = materials[0]
 		@posts = []
 		#if materials.index("All") == nil
@@ -107,8 +106,6 @@ class PostsController < ApplicationController
 		end
 
 		separate_demand_supply
-		puts @demand
-		puts @supply
 	end
 
 	def create

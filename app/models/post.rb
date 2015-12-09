@@ -31,14 +31,14 @@ class Post < ActiveRecord::Base
 
   def self.getByLocations(locations)
     location = locations.join(' | ')
-    Post.where("to_tsvector('english', location) @@ to_tsquery('english', ?) ",location)
+    Post.where("to_tsvector('english', location) @@ plainto_tsquery('english', ?) ",location)
     #Post.where()
   end
 
   def self.getByMaterials(materials)
     puts materials
     material = materials.join(' | ')
-    Post.where("to_tsvector('english', materials) @@ to_tsquery('english', ?) ",material)
+    Post.where("to_tsvector('english', materials) @@ plainto_tsquery('english', ?) ",material)
   end
 
   def self.getByMaterial(material)
@@ -47,11 +47,11 @@ class Post < ActiveRecord::Base
     Post.where("materials like ?", material)
   end
 
-  def self.getByLocationsAndMaterials(locations, material)
-    location = locations.join(' | ')
+  def self.getByLocationsAndMaterials(locations, materials)
+    location = locations
     material = materials.join(' | ')
-    Post.where("to_tsvector('english', location) @@ to_tsquery('english', ?) AND
-                to_tsvector('english', materials) @@ to_tsquery('english', ?)",
+    Post.where("to_tsvector('english', location) @@ plainto_tsquery('english', ?) AND
+                to_tsvector('english', materials) @@ plainto_tsquery('english', ?)",
                 location, material)
   end
 end
