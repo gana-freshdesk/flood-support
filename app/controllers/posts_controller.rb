@@ -46,14 +46,14 @@ class PostsController < ApplicationController
 	end
 
 	def needpage
-	    @demand = Post.where("action=0").paginate(:page => params[:page], :per_page => 10)
+	    @demand = Post.where("action=0").paginate(:page => params[:page], :per_page => 50)
 	    respond_to do |format|
 	    	format.js
 	    end
 	end
 
 	def supplypage
-	    @supply = Post.where("action=1").paginate(:page => params[:page], :per_page => 10)
+	    @supply = Post.where("action=1").paginate(:page => params[:page], :per_page => 50)
 	    respond_to do |format|
 	    	format.js
 	    end
@@ -154,8 +154,8 @@ class PostsController < ApplicationController
 				@supply << post
 			end
 		end
-		@demand = @demand.paginate(:page => params[:page], :per_page => 10)
-		@supply = @supply.paginate(:page => params[:page], :per_page => 10) 
+		@demand = @demand.paginate(:page => params[:page], :per_page => 50)
+		@supply = @supply.paginate(:page => params[:page], :per_page => 50) 
 	end
 
 end
