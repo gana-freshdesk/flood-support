@@ -35,7 +35,9 @@
           <div class="panel-body" id="demand_div">
             <%= render :partial => 'needpartial' %>
           </div>
+          <% if @demand.any? %>
           <%= will_paginate(@demand,:params => {:action => "needpage" }) %>
+          <% end %>
         </div>
       </div>
       <div class="col-md-5">
@@ -47,7 +49,9 @@
           <div class="panel-body" id="supply_div">
             <%= render :partial => 'supplypartial' %>
           </div>
+          <% if @supply.any? %>
           <%= will_paginate(@supply,:params => {:action => "supplypage" }) %>
+          <% end %>
         </div>
       </div>
     </div>
