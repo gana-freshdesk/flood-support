@@ -47,10 +47,16 @@ class PostsController < ApplicationController
 
 	def needpage
 	    @demand = Post.where("action=0").paginate(:page => params[:page], :per_page => 10)
+	    respond_to do |format|
+	    	format.js
+	    end
 	end
 
 	def supplypage
 	    @supply = Post.where("action=1").paginate(:page => params[:page], :per_page => 10)
+	    respond_to do |format|
+	    	format.js
+	    end
 	end
 
 	def location
