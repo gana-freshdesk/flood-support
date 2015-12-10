@@ -25,6 +25,8 @@ class PostsController < ApplicationController
 				end
 			end
             
+            @sel_location = 'All Places'
+
 			if post.materials == nil
 				next
 			end
@@ -55,6 +57,8 @@ class PostsController < ApplicationController
 		if location == nil
 			location = 'All'
 		end
+		
+		@sel_location = location
 
         query materials, location
 	end
@@ -83,13 +87,10 @@ class PostsController < ApplicationController
 		#end
 
 		if material != 'All' && location != 'All'
-			puts "HERE1"
 			@posts = Post.getByLocationsAndMaterials(location, materials)
 		elsif material == 'All' && location != 'All'
-			puts "HERE2"
 			@posts = Post.getByLocation(location)
 		elsif material != 'All' && location == 'All'
-			puts "HERE2"
 			@posts = Post.getByMaterial(material)
 		else
 			index

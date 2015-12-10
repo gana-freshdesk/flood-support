@@ -1,17 +1,43 @@
 @charset "UTF-8";
 /* CSS Document */
+*{font-family: 'Roboto', sans-serif; font-size:12px;}
 .searchBar{ padding-bottom:20px}
 .searchBar h4{display:inline-block}
-.searchBar select{width: 60%; display: inline-block;}
+.searchBar select{display: inline; width: 275px;}
 .checkbox label{display:block;}
 .alertAreas{text-transform:uppercase;}
 .media{padding:15px 20px; border:1px solid #ccc; border-radius:5px;}
-.navbar {border-radius:0;}
-.media-body{display: block; width: 100%}
+.navbar {border-radius:0; background:#333; border-color:#333}
+.navbar-inverse .navbar-brand{color: #449d44 }
+a, a:link{color:#1E824C;}
+.mb30{margin-bottom: 30px;}
 
 
 /* Multi select Dropdown */
 .multiselect-container{position:absolute;list-style-type:none;margin:0;padding:0}.multiselect-container .input-group{margin:5px}.multiselect-container>li{padding:0}.multiselect-container>li>a.multiselect-all label{font-weight:700}.multiselect-container>li.multiselect-group label{margin:0;padding:3px 20px 3px 20px;height:100%;font-weight:700}.multiselect-container>li.multiselect-group-clickable label{cursor:pointer}.multiselect-container>li>a{padding:0}.multiselect-container>li>a>label{margin:0;height:100%;cursor:pointer;font-weight:400;padding:3px 20px 3px 40px}.multiselect-container>li>a>label.radio,.multiselect-container>li>a>label.checkbox{margin:0}.multiselect-container>li>a>label>input[type=checkbox]{margin-bottom:5px}.btn-group>.btn-group:nth-child(2)>.multiselect.btn{border-top-left-radius:4px;border-bottom-left-radius:4px}.form-inline .multiselect-container label.checkbox,.form-inline .multiselect-container label.radio{padding:3px 20px 3px 40px}.form-inline .multiselect-container li a label.checkbox input[type=checkbox],.form-inline .multiselect-container li a label.radio input[type=radio]{margin-left:-20px;margin-right:0}
+
+.logo {position: absolute; width: 75px; margin-top: 5px;}
+.navbar-brand{position: absolute;left: 100px;padding: 10px; line-height: 14px; }
+.navbar-brand span{color: #fff; font-size:10px;}
+
+/* .lftBar-0{display:none;}
+.lftBar-1{width:24%; position:absolute; left:1%;}
+.mainCtd-0{width:75%; margin-left:25%;}
+.mainCtd-1{width:100%;} */
+.lftBar-0{}
+.lftBar-1{display:block;}
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {z-index: 2; color: #fff; background-color: #5cb85c; border-color: #4cae4c;}
+.choose-items {margin-bottom: 20px;}
+.choose-items h4{display: inline-block; padding-right:20px;}
+.choose-items form{display: inline-block;}
+
+.butn-hide{margin: 0 3px 3px 0}
+
+.panel-danger>.panel-heading {color: #fff; background-color: #a94442; border-color: #a94442;}
+.panel-success>.panel-heading {color: #fff; background-color: #019875; border-color: #019875;}
+
+
+.btn-default .badge{background:#aaa; font-size: 10px}
 
 blockquote.twitter-tweet {
   display: inline-block;

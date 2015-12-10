@@ -1,10 +1,7 @@
-<p><b>Browse By Area</b></p>
 <% @loc_count.sort.map do |location,count| %>
 
-<div>
 	<%= link_to posts_location_path(location), remote: true do %>
-	<button class="form-control text-left"><%= location %> (<%= count %>)</button>
+	<button class="btn btn-default btn-xs butn-hide"><%= location %> <span class="badge"><%= count %></span></button>
   <% end %>
 
-              </div>
-<% end %> 
+<% end %>

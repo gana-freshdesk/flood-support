@@ -1,9 +1,8 @@
 <% @demand.each do |post| %>
         <% if post.source == 0 %>
-              <div class="fb-post" 
+              <div class="fb-post mb30" 
                 data-href="<%= post.url %>"
-        data-width="500"></div>
-      </br>
+        data-width="100%"></div>
         <% elsif post.source == 2 %>
           <%=  post.twitter_html.html_safe %>
         </br>     
