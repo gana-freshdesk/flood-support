@@ -14,6 +14,10 @@ ChennaiFloods::Application.routes.draw do
 
   get "posts/location"
 
+  get "posts/needpage"
+
+  get "posts/supplypage"
+
   #get "floodsupport", :to => "posts#index"
 
   resources :posts

@@ -45,6 +45,14 @@ class PostsController < ApplicationController
 		separate_demand_supply
 	end
 
+	def needpage
+	    @demand = Post.where("action=0").paginate(:page => params[:page], :per_page => 10)
+	end
+
+	def supplypage
+	    @supply = Post.where("action=1").paginate(:page => params[:page], :per_page => 10)
+	end
+
 	def location
 		puts "PARAMS " 
 		puts params
@@ -57,7 +65,7 @@ class PostsController < ApplicationController
 		if location == nil
 			location = 'All'
 		end
-		
+
 		@sel_location = location
 
         query materials, location
@@ -139,7 +147,9 @@ class PostsController < ApplicationController
 			else
 				@supply << post
 			end
-		end 
+		end
+		@demand = @demand.paginate(:page => params[:page], :per_page => 10)
+		@supply = @supply.paginate(:page => params[:page], :per_page => 10) 
 	end
 
 end

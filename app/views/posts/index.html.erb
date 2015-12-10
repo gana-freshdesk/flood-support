@@ -35,6 +35,7 @@
           <div class="panel-body" id="demand_div">
             <%= render :partial => 'needpartial' %>
           </div>
+          <%= will_paginate(@demand,:params => {:action => "needpage" }) %>
         </div>
       </div>
       <div class="col-md-5">
@@ -46,6 +47,7 @@
           <div class="panel-body" id="supply_div">
             <%= render :partial => 'supplypartial' %>
           </div>
+          <%= will_paginate(@supply,:params => {:action => "supplypage" }) %>
         </div>
       </div>
     </div>
@@ -120,14 +122,15 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#chooseItem').multiselect();
-		$('#chooseLocation').multiselect();
+        //$('#chooseItem').multiselect();
+		//$('#chooseLocation').multiselect();
+
+
     });
 
 $('#trig').on('click', function () {
     //$('#colPush').toggleClass('lftBar-0 lftBar-1');
 });
-
  /*$('.butn-hide').on('click', function () {
     $('#colMain').toggleClass('mainCtd-1 mainCtd-0');
     $('#colPush').toggleClass('lftBar-0 lftBar-1');
