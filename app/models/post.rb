@@ -26,32 +26,33 @@ class Post < ActiveRecord::Base
   end
 
   def self.getByLocation(location)
-    Post.where("location like '%?%'", location)
+    l = '%' + location + '%'
+    Post.where("location like ? and created_at > (NOW() - INTERVAL '12 hour')", l)
   end
 
   def self.getByLocations(locations)
     location = locations.join(' | ')
-    Post.where("to_tsvector('english', location) @@ plainto_tsquery('english', ?) ",location)
+    Post.where("to_tsvector('english', location) @@ plainto_tsquery('english', ?) and created_at > (NOW() - INTERVAL '12 hour')",location)
     #Post.where()
   end
 
   def self.getByMaterials(materials)
     puts materials
     material = materials.join(' | ')
-    Post.where("to_tsvector('english', materials) @@ plainto_tsquery('english', ?) ",material)
+    Post.where("to_tsvector('english', materials) @@ plainto_tsquery('english', ?) and created_at > (NOW() - INTERVAL '12 hour')",material)
   end
 
   def self.getByMaterial(material)
     material = '%' + material + '%'
     #puts material
-    Post.where("materials like ?", material)
+    Post.where("materials like ? and created_at > (NOW() - INTERVAL '12 hour')", material)
   end
 
   def self.getByLocationsAndMaterials(locations, materials)
     location = locations
     material = materials.join(' | ')
     Post.where("to_tsvector('english', location) @@ plainto_tsquery('english', ?) AND
-                to_tsvector('english', materials) @@ plainto_tsquery('english', ?)",
+                to_tsvector('english', materials) @@ plainto_tsquery('english', ?) and created_at > (NOW() - INTERVAL '12 hour')",
                 location, material)
   end
 end

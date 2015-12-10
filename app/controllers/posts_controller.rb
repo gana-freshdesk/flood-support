@@ -1,28 +1,30 @@
 require 'set'
 class PostsController < ApplicationController
-  respond_to :html, :js
+  respond_to :js
   
 	def index
 		@locations = Set.new
 		@materials = Set.new
+		@loc_count = Hash.new(0)
 		@materials.add?("All")
 		@posts = Post.getAll
 		#puts @posts
 		#@locations = Set.new
 		#@materials = Set.new
-		
+		session[:material] = 'All'
 		@posts.each do |post|
 			if post.location != nil
 				#puts post.location.split(',')
 				ls = post.location.split(',')
 				ls.each do |l|
 					l = l.strip
+					@loc_count[l]+=1
 					if !@locations.include?(l)
 						@locations.add?(l)
 					end
 				end
 			end
-
+            
 			if post.materials == nil
 				next
 			end
@@ -35,6 +37,7 @@ class PostsController < ApplicationController
 					@materials.add?(m)
 				end
 			end
+			@materials
 		end
 
 		separate_demand_supply
@@ -80,16 +83,20 @@ class PostsController < ApplicationController
 		#end
 
 		if material != 'All' && location != 'All'
+			puts "HERE1"
 			@posts = Post.getByLocationsAndMaterials(location, materials)
 		elsif material == 'All' && location != 'All'
+			puts "HERE2"
 			@posts = Post.getByLocation(location)
 		elsif material != 'All' && location == 'All'
+			puts "HERE2"
 			@posts = Post.getByMaterial(material)
 		else
 			index
 		end
 
 		@locations = Set.new
+		@loc_count = Hash.new(0)
 
 		@posts.each do |post|
 			#next if post.location == nil
@@ -98,6 +105,7 @@ class PostsController < ApplicationController
 				ls = post.location.split(',')
 				ls.each do |l|
 					l = l.strip
+					@loc_count[l]+=1
 					if !@locations.include?(l)
 						@locations.add?(l)
 					end
