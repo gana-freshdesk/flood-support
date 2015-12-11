@@ -19,6 +19,7 @@ $(function() {
   $(".pagination a").on("click", function() {
     //$(".pagination").html("Page is loading...");
     $.getScript(this.href);
+    $("html, body").animate({ scrollTop: 0 }, "slow");
     return false;
 });
 

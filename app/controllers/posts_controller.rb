@@ -46,14 +46,14 @@ class PostsController < ApplicationController
 	end
 
 	def needpage
-	    @demand = Post.where("action=0").paginate(:page => params[:page], :per_page => 50)
+	    @demand = Post.select('DISTINCT ON (url) *').where("action=0").paginate(:page => params[:page], :per_page => 50)
 	    respond_to do |format|
 	    	format.js
 	    end
 	end
 
 	def supplypage
-	    @supply = Post.where("action=1").paginate(:page => params[:page], :per_page => 50)
+	    @supply = Post.select('DISTINCT ON (url) *').where("action=1").paginate(:page => params[:page], :per_page => 50)
 	    respond_to do |format|
 	    	format.js
 	    end
