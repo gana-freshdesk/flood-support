@@ -27,25 +27,25 @@ class Post < ActiveRecord::Base
 
   def self.getByLocation(location)
     l = '%' + location + '%'
-    Post.select('DISTINCT ON (url,created_at) *').where("location ilike ? and created_at > (NOW() - INTERVAL '12 hour')", l).order('created_at DESC').limit(50)
+    Post.select('DISTINCT ON (url,created_at) *').where("location ilike ? and created_at > (NOW() - INTERVAL '12 hour')", l).order('created_at DESC').limit(100)
   end
 
   def self.getByLocations(locations)
     location = locations.join(' | ')
-    Post.select('DISTINCT ON (url,created_at) *').where("to_tsvector('english', location) @@ plainto_tsquery('english', ?) and created_at > (NOW() - INTERVAL '12 hour')",location).order('created_at DESC').limit(50)
+    Post.select('DISTINCT ON (url,created_at) *').where("to_tsvector('english', location) @@ plainto_tsquery('english', ?) and created_at > (NOW() - INTERVAL '12 hour')",location).order('created_at DESC').limit(100)
     #Post.where()
   end
 
   def self.getByMaterials(materials)
     puts materials
     material = materials.join(' | ')
-    Post.select('DISTINCT ON (url,created_at) *').where("to_tsvector('english', materials) @@ plainto_tsquery('english', ?) and created_at > (NOW() - INTERVAL '12 hour')",material).order('created_at DESC').limit(50)
+    Post.select('DISTINCT ON (url,created_at) *').where("to_tsvector('english', materials) @@ plainto_tsquery('english', ?) and created_at > (NOW() - INTERVAL '12 hour')",material).order('created_at DESC').limit(100)
   end
 
   def self.getByMaterial(material)
     material = '%' + material + '%'
     #puts material
-    Post.select('DISTINCT ON (url,created_at) *').where("materials ilike ? and created_at > (NOW() - INTERVAL '12 hour')", material).order('created_at DESC').limit(50)
+    Post.select('DISTINCT ON (url,created_at) *').where("materials ilike ? and created_at > (NOW() - INTERVAL '12 hour')", material).order('created_at DESC').limit(100)
   end
 
   def self.getByLocationsAndMaterials(locations, materials)
@@ -53,6 +53,6 @@ class Post < ActiveRecord::Base
     material = materials.join(' | ')
     Post.select('DISTINCT ON (url,created_at) *').where("to_tsvector('english', location) @@ plainto_tsquery('english', ?) AND
                 to_tsvector('english', materials) @@ plainto_tsquery('english', ?) and created_at > (NOW() - INTERVAL '12 hour')",
-                location, material).order('created_at DESC').limit(50)
+                location, material).order('created_at DESC').limit(100)
   end
 end

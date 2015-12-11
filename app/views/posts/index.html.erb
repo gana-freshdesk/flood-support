@@ -2,7 +2,7 @@
 <div id="page-content-wrapper">
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
-      <div class="navbar-header"><img class="logo" src="assets/logo.png" /><a class="navbar-brand">Save the Volunteer<br/><span>from outdated &amp; false messages</span></a></div>
+      <div class="navbar-header"><img class="logo" src="assets/image01.png" /><a class="navbar-brand">Save the Volunteer<br/><span>from outdated &amp; false messages</span></a></div>
     </div>
   </nav>
   <div class="container-fluid mainCtd-1" id="colMain">
@@ -36,9 +36,6 @@
           <div class="panel-body" id="demand_div">
             <%= render :partial => 'needpartial' %>
           </div>
-          <% if @demand.any? %>
-          <%= will_paginate(@demand,:params => {:action => "needpage" }) %>
-          <% end %>
         </div>
       </div>
       <div class="col-md-5">
@@ -50,9 +47,6 @@
           <div class="panel-body" id="supply_div">
             <%= render :partial => 'supplypartial' %>
           </div>
-          <% if @supply.any? %>
-          <%= will_paginate(@supply,:params => {:action => "supplypage" }) %>
-          <% end %>
         </div>
       </div>
     </div>
