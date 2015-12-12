@@ -41,7 +41,7 @@ class PostsController < ApplicationController
 			end
 			@materials
 		end
-
+        
 		separate_demand_supply
 	end
 
@@ -154,8 +154,6 @@ class PostsController < ApplicationController
 				@supply << post
 			end
 		end
-		@demand = @demand.paginate(:page => params[:page], :per_page => 50)
-		@supply = @supply.paginate(:page => params[:page], :per_page => 50) 
 	end
 
 end

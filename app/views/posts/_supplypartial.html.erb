@@ -1,4 +1,4 @@
-<% @supply.each do |post| %>
+<% @supply.first(100).each do |post| %>
         <% if post.source == 0 %>
               <div class="fb-post" 
                 data-href="<%= post.url %>"
